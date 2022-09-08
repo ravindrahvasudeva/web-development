@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+
+<style>
+    .flip-container {
+        perspective: 1000;
+
+    }
+
+    .flipper {
+        padding: 30px;
+        width: 300px;
+        height: 250px;
+        position: relative;
+        background: #f5F5F5;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        border-radius: 20px;
+        transition: 0.6s;
+        transform-style: preserve-3d;
+    }
+
+
+
+    .front {
+        background-color: rgba(0, 0, 0, .3);
+        position: absolute;
+        padding: 10px 30px;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        backface-visibility: hidden;
+    }
+
+    .back {
+
+        background-color: rgba(0, 0, 0, .3);
+        position: absolute;
+        padding: 10px 30px;
+        top: 0;
+        left: 0;
+        right: 0;
+        align-items: center;
+        backface-visibility: hidden;
+
+    }
+
+    .front {
+        z-index: 2;
+        /* for firefox 31 */
+        transform: rotateY(0deg);
+    }
+
+    .back {
+        transform: rotateY(180deg);
+    }
+
+    .flip {
+        transform: rotateY(180deg);
+    }
+
+    button {
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 15px;
+        height: 40px;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 15px;
+        height: 40px;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .flipbutton {
+        color: #105ff1;
+        text-decoration: none;
+        text-align: left !important;
+    }
+
+
+
+    /* Alignment styles */
+
+    body,
+    html {
+        height: 100%;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        background: #092756;
+        background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -moz-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -webkit-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -o-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -ms-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), linear-gradient(135deg, #670d10 0%, #092756 100%);
+    }
+</style>
+
+<body>
+    {% csrf_token %}
+    <div class="flip-container">
+        <div class="flipper" id="flipper">
+            <div class="front">
+                <h1 class="title">Login</h1>
+
+                <form action="login" method="post" id="form">
+                    {% csrf_token %}
+                    <input type=" text" name="username" placeholder="username" id="username" required><br>
+                    <input type="password" name="password" placeholder="password" id="password" required><br>
+                    <div id="toggle" onclick="showHide();"></div>
+                    <button>Login</button>
+                </form>
+
+                <a class="flipbutton" id="loginButton" href="#">Create my account →</a>
+            </div>
+
+            <div class="back">
+                <h1 class="title">Register</h1>
+                <form action="register" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="first_name" placeholder="first_name" required><br>
+                    <input type="text" name="last_name" placeholder="last_name" required><br>
+                    <input type="email" name="email" placeholder="email" required><br>
+                    <input type="number" name="phonenumber" placeholder="phonenumber" maxlength="10" required><br>
+                    <input type="text" name="username" placeholder="username" required><br>
+                    <input type="password" name="password1" placeholder="password" required><br>
+                    <input type="password" name="password2" placeholder="confirm password" required><br>
+                    <button>Register</button>
+
+
+                </form>
+                <a class="flipbutton" id="registerButton" href="#">Login to my account →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var loginButton = document.getElementById("loginButton");
+        var registerButton = document.getElementById("registerButton");
+
+        loginButton.onclick = function () {
+            document.querySelector("#flipper").classList.toggle("flip");
+        }
+
+        registerButton.onclick = function () {
+            document.querySelector("#flipper").classList.toggle("flip");
+        }
+        const password = document.getElementById('pasword');
+        const toggle = document.getElementById('toggle');
+
+        function showHide() {
+            if (password.type === 'password') {
+                password.setAttribute('type', 'text');
+                toggle.classList.add('hide')
+
+            }
+            else {
+                password.setAttribute('type', 'password');
+                toggle.classList.add('hide')
+
+            }
+            var form = document.getElementById("form")
+            form.addEventListener('submit', function (event) {
+                event.preventDefault()
+
+                var username = document.getElementById("username").value
+                console.log(username);
+                var username = document.getElementById("password").value
+                alert("password will be saved")
+
+            })
+        }
+
+
+    </script>
+
+</body>
+
+</html>

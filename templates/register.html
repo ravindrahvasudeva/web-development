@@ -1,0 +1,288 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="login" method="post">
+       {% csrf_token %}
+       <input type=" text" name="username" placeholder="username"><br>
+       <input type=" password" name="password" placeholder="password"><br>
+       <input type="submit" >
+    </form>
+
+
+    <div>
+        {% if messages %}
+            {% for message in messages %}
+            <h3>{{messages}}</h3>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>LOGIN</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            font-family: sans-serif;
+            background: rgb(187, 187, 245);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            width: 350px;
+            height: 500px;
+            box-shadow: 0 0 40px 20px rgba(0, 0, 0, 0.26);
+            perspective: 1000px;
+        }
+
+
+        .inner-box {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-image: linear-gradient(rgba(0, 0, 100, 0.8)), url(c:Users\ravid\OneDrive\Desktop\login\background.png);
+            padding: 55px;
+            box-sizing: border-box;
+            backface-visibility: hidden;
+
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
+        .card h2 {
+            font-weight: normal;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input-box {
+            width: 100%;
+            background: transparent;
+            border: 1px solid #fff;
+            margin: 6px 0;
+            height: 32px;
+            border-radius: 20px;
+            padding: 0 10px;
+            box-sizing: border-box;
+            outline: none;
+            text-align: center;
+            color: #fff;
+        }
+
+        ::placeholder {
+            color: #fff;
+            font-size: 12px;
+        }
+
+        button {
+            width: 100%;
+            background: transparent;
+            border: 1px solid #fff;
+            margin: 35px 0 10px;
+            height: 32px;
+            font-size: 12px;
+            border-radius: 20px;
+            padding: 0 10px;
+            box-sizing: border-box;
+            outline: none;
+            color: #fff;
+            cursor: pointer;
+
+        }
+
+        .submit-btn {
+            position: relative;
+        }
+
+        .submit-btn::after {
+            content: '\27a4';
+            color: #333;
+            line-height: 32px;
+            font-size: 17px;
+            height: 32px;
+            border-radius: 50%;
+            background: #fff;
+            position: absolute;
+            right: -1px;
+            top: -1px;
+        }
+
+        span {
+            font-size: 13px;
+            margin-left: 10px;
+        }
+
+        .card .btn {
+            margin-top: 70px;
+        }
+
+        .card a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            font-size: 13px;
+            margin-top: 8px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="inner-box">
+                <div class="inner-box" id="card">
+                    <div class="card-front"></div>
+                    <h2>LOGIN</h2>
+                    <form action="login" method="post">
+                        {% csrf_token %}
+                        <input type="email" class="input-box" placeholder="Your Email Id" required>
+                        <input type="password" class="input-box" placeholder="password" required>
+                        <button type="submit" class="submit-btn">Submit</button>
+                        <input type="checkbox"><span>Remember me</span>
+                    </form>
+                    <button type="button" class="btn" onclick="Register()">I'm New Here</button>
+                    <a href="">Forget password</a>
+                </div>
+                <div class="card-back">
+                    <h2>REGISTER</h2>
+                    <form action="register" method="post">
+                        {% csrf_token %}
+                        <input type="text" class="input-box" placeholder="Your Name" required>
+                        <input type="email" class="input-box" placeholder="Your Email Id" required>
+                        <input type="password" class="input-box" placeholder="password" required>
+                        <button type="submit" class="submit-btn">Submit</button>
+                        <input type="checkbox"><span>Remember me</span>
+                    </form>
+                    <button type="button" class="btn" onclick="Login()">I've an account</button>
+                    <a href="">Forget password</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var card = document.getElementById("card");
+        function Register() {
+            card.style.transform = "rotateY(-180deg)";
+        }
+        function Login() {
+            card.style.transform = "rotateY(0deg)";
+        }
+    </script>
+    <div>
+        {% if messages %}
+        {% for message in messages %}
+        <h3>{{messages}}</h3>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+
+</body>
+
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registation</title>
+</head>
+
+<body>
+    <form action="register" method="post">
+        {% csrf_token %}
+        <input type="text" name="first_name" placeholder="first_name"><br>
+        <input type="text" name="last_name" placeholder="last_name"><br>
+        <input type="email" name="email" placeholder="email"><br>
+        <input type="text" name="username" placeholder="username"><br>
+        <input type="number" name="phonenumber" placeholder="phonenumber"><br>
+        <input type="password" name="password1" placeholder="password"><br>
+        <input type="password" name="password2" placeholder="confirm password"><br>
+        <input type="submit" name="" id="">
+
+
+    </form>
+    <div>
+        {% if messages %}
+        {% for message in messages %}
+        <h3>{{messages}}</h3>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+</body>
+
+</html>
+
+
+
+
+<body>
+    <header>
+        <form action="add" method="POST">
+            {%csrf_token%}
+            <p>welcome {{user.username}}</p>
+            <div class="header_menu">
+                <div class="logo">
+                    <h1>Adminlogin</h1>
+                </div>
+                <div class="menu_list">
+                    <ul>
+                        <li><a href="details">ADD</a></li>
+                        <li><a href="http://127.0.0.1:8000/products/">VIEW</a></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+        <div class="header_content">
+            <form action="logout" method="post">
+                {% csrf_token %}
+                <a href="acounts/logout"><button>logout</button></a>
+            </form>
+        </div>
+    </header>
+</body>
+
+</html>

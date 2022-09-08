@@ -1,0 +1,146 @@
+{% load static %}
+{% csrf_token %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        header {
+            width: 100%;
+            height: 100vh;
+            background-image: url('{%static 'img/bg41.jpg' %}');
+            background-size: cover;
+        }
+
+        .header_menu {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background: transparent;
+            box-shadow: -2px -2px 20px -2px black;
+        }
+
+        .logo h1 {
+            color: mediumaquamarine;
+            margin-left: 70px;
+        }
+
+        .menu_list {
+            width: 80%;
+            text-align: right;
+            padding-right: 50px;
+
+        }
+
+        .menu_list li {
+            display: inline-block;
+            text-transform: uppercase;
+            list-style: none;
+            letter-spacing: 2px;
+            padding-left: 50px;
+        }
+
+        .menu_list li a {
+            text-decoration: none;
+            color: whitesmoke;
+        }
+
+        .menu_list li a:hover {
+            color: red;
+        }
+
+        .header_content {
+            width: 100%;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .header_content h2 {
+            margin-bottom: 50px;
+            font-size: 17px;
+            font-weight: 200px;
+            letter-spacing: 0.3em;
+            color: indianred;
+        }
+
+        .header_content h1 {
+            margin-bottom: 50px;
+            font-size: 50px;
+            font-weight: 500px;
+            letter-spacing: 0.7em;
+            color: blueviolet;
+        }
+
+        .header_content button {
+            height: auto;
+            padding: 8px 37px;
+            font-size: 12px;
+            background: rgb(0, 0, 0, 0.5);
+            margin-right: 20px;
+            border-radius: 3px;
+            border: 1px whitesmoke;
+        }
+
+        .header_content button {
+            text-decoration: none;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-shadow: violet;
+            letter-spacing: 1px;
+            color: whitesmoke;
+        }
+
+        .header_content button:hover {
+            background-color: orange;
+            border: 1px solid orange;
+        }
+    </style>
+</head>
+
+<body style="background-image:url('{% static 'img/bg41.jpg' %}');">
+    <header>
+        <form action="add" method="POST">
+            {%csrf_token%}
+
+            <div class="header_menu">
+                <div class="logo">
+                    <h1> Adminlogin</h1>
+                </div>
+                <div class="menu_list">
+                    <ul>
+                        <li><a href="details">ADD</a></li>
+                        <li><a href="http://127.0.0.1:8000/products/">VIEW</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </form>
+
+        <div class="header_content">
+            <div class="header_content">
+                <h2>admin verification procedure</h2>
+                <h1>WELCOME<br>
+                    {{user.username}}
+                </h1>
+
+
+                <form action="logout" method="post">
+                    {% csrf_token %}
+                    <a href="acounts/logout"><button>Logout</button></a>
+                </form>
+            </div>
+    </header>
+</body>
+
+</html>

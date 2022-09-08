@@ -1,0 +1,143 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript">
+        function charcount(startfrom, charend) {
+            var len = document.getElementById(startfrom).value.length;
+            document.getElementById(charcount).innerHTML = len;
+        }
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flip-container {
+            perspective: 1000;
+
+        }
+
+        body,
+        html {
+            height: 100%;
+        }
+
+        .flipper {
+            padding: 30px;
+            width: 50%;
+            height: 100%;
+            position: relative;
+            background: #f5F5F5;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            transition: 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        input,
+        select {
+            width: 100%;
+            margin-bottom: 15px;
+            height: 40px;
+            box-sizing: border-box;
+            padding: 10px;
+            align-items: center;
+        }
+
+        input radio {
+
+            margin-bottom: 15px;
+            height: 4px;
+            box-sizing: border-box;
+            padding: 10px;
+            align-items: center;
+        }
+
+        button {
+            cursor: pointer;
+            width: 50%;
+            margin-bottom: 15px;
+            height: 40px;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        .goback {
+            cursor: pointer;
+            width: 250px;
+            margin-bottom: 15px;
+            height: 50px;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        .back {
+
+            background-color: rgba(0, 0, 0, .3);
+            position: absolute;
+            padding: 10px 30px;
+            top: 0;
+            left: 0;
+            right: 0;
+            align-items: center;
+            backface-visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="ration" method="post">
+        {% csrf_token %}
+        <div class="goback">
+            <button><a href="http://127.0.0.1:8000/products/">view people</a></button>
+        </div>
+        <div class="flip-container">
+            <div class="flipper" id="flipper">
+
+                <div class="back" id="back">
+                    <br>
+                    <h1 class="title">Details</h1>
+                    <br>
+                    <input type=text name=name id="name" placeholder="Name" required><br>
+
+                    <input type=text name=age id="age" placeholder="Age" required><br>
+
+                    <input type="text" name="address" id="address" placeholder="address" required><br>
+
+                    <select name="District" id="District" required>
+                        <option value="-1" selected>select District</option>
+                        <option value="udupi">udupi</option>
+                        <option value="bangalore">bangalore</option>
+                        <option value="mysore">mysore</option>
+                        <option value="mandya">mandya</option>
+                        <option value="tumkur">tumkur</option>
+                        <option value="manglore">manglore</option>
+                    </select><br>
+
+                    <input type="text" name="Aadhar_no" id="Aadhar_no" placeholder="Adhar number" maxlength="12"
+                        required><br>
+                    <input type="text" name="salary" id="salary" placeholder="salary" required><br>
+                    <input type="text" name="rationcard" id="rationcard" placeholder="RationCard number" maxlength="10"
+                        required><br>
+                    <input type="text" name="phone_number" id="phone_number" placeholder="phone number" maxlength="10"
+                        required>
+                    <select name="cardtype" id="cardtype" required>
+                        <option value="-1" selected>select card</option>
+                        <option value="APL">APL</option>
+                        <option value="BPL">BPL</option>
+                        <option value="AAY">AAY</option>
+                    </select><br>
+
+                    <button>reset</button><button>submit</button>
+
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

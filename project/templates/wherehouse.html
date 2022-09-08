@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wharehouse</title>
+    <style>
+        table,
+        th,
+        td {
+            padding-top: 20px;
+            border: 2px solid paleturquoise;
+            font-size: 20px;
+
+        }
+
+        h1 {
+            text-size-adjust: 25px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, cursive;
+            background: #092756;
+            background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -moz-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+            background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -webkit-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+            background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -o-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+            background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -ms-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+            background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), linear-gradient(135deg, #670d10 0%, #092756 100%);
+            color: white;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        table {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: sans-serif;
+
+            background: #092756;
+            background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -moz-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+            background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -webkit-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+            background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -o-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+            background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -ms-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+            background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), linear-gradient(135deg, #670d10 0%, #092756 100%);
+        }
+
+        td,
+        th {
+            padding-left: 25px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 10px;
+            font-family: "Lato", Arial, sans-serif;
+
+            animation: change 10s ease-in-out infinite;
+        }
+
+        @keyframes change {
+            0% {
+                background-position: 0 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0 50%;
+            }
+
+        }
+    </style>
+</head>
+
+<body background="{% static 'RICE.jpg' %}">
+    {% csrf_token %}
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+      </div>
+    <h1>REPORT ON DISTRICT WISE ACTIVE AND INACTIVE FAIR PRICE SHOP</h1>
+    <table>
+        <tr>
+            <th> DISTRICT NAME </th>
+            <th>NO OF ACTIVE SHOPS </th>
+            <th>NO OF INACTIVE SHOPS </th>
+        </tr>
+        <tr>
+            <td>BAGALKOTE</td>
+            <td>361</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>BENGALORE_EAST</td>
+            <td>451</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>BENGALORE_NORTH</td>
+            <td>421</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>BENGALORE_SOUTH</td>
+            <td>421</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>BENGALORE_WEST</td>
+            <td>721</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>BENGALORE_RURAL</td>
+            <td>721</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>BELGAVI</td>
+            <td>661</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>BELLARI</td>
+            <td>721</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>BIDAR</td>
+            <td>511</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>VIJAYAPURA</td>
+            <td>881</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>CHAMARAJANAGAR</td>
+            <td>611</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>CHICKKAMANAGALURU</td>
+            <td>611</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>CHITRADURGA</td>
+            <td>721</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>CHIKKABALLAPURA</td>
+            <td>721</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>DAKSHINA KANNADA</td>
+            <td>701</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>DAVANAGERE</td>
+            <td>111</td>
+            <td>45</td>
+        </tr>
+        <tr>
+            <td>DHARWARD</td>
+            <td>751</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>DHARWARD</td>
+            <td>721</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>GADAG</td>
+            <td>541</td>
+            <td>55</td>
+        </tr>
+        <tr>
+            <td>KALABURAGI</td>
+            <td>661</td>
+            <td>16</td>
+        </tr>
+        <tr>
+            <td>HASSAN</td>
+            <td>511</td>
+            <td>22</td>
+        </tr>
+        <tr>
+            <td>HAVERI</td>
+            <td>421</td>
+            <td>16</td>
+        </tr>
+        <tr>
+            <td>KODAGU</td>
+            <td>701</td>
+            <td>16</td>
+        </tr>
+        <tr>
+            <td>KOLAR</td>
+            <td>321</td>
+            <td>14</td>
+        </tr>
+        <tr>
+            <td>KOPPAL</td>
+            <td>521</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>MANDYA</td>
+            <td>755</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>MYSURU</td>
+            <td>721</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>RAICHUR</td>
+            <td>558</td>
+            <td>48</td>
+        </tr>
+        <tr>
+            <td>RAMANAGARA</td>
+            <td>721</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>SHIVAMOGGA</td>
+            <td>5711</td>
+            <td>165</td>
+        </tr>
+        <tr>
+            <td>TUMAKURU</td>
+            <td>1091</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>UDUPI</td>
+            <td>295</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>UTTARA_KANNADA</td>
+            <td>405</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>YADGIR</td>
+            <td>400</td>
+            <td>7</td>
+        </tr>
+    </table>
+</body>
+
+</html>

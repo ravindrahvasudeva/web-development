@@ -1,0 +1,61 @@
+
+.flip-container {
+    perspective: 1000;
+
+}
+
+body,
+html {
+    height: 100%;
+}
+
+.flipper {
+    padding: 30px;
+    width: 50%;
+    height: 100%;
+    position: relative;
+    background: #f5F5F5;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    transition: 0.6s;
+    transform-style: preserve-3d;
+}
+
+input,
+select {
+    width: 100%;
+    margin-bottom: 15px;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 10px;
+    align-items: center;
+}
+input radio{
+    
+    margin-bottom: 15px;
+    height: 4px;
+    box-sizing: border-box;
+    padding: 10px;
+    align-items: center;
+}
+
+button {
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.back {
+
+        background-color: rgba(0, 0, 0, .3);
+        position: absolute;
+        padding: 10px 30px;
+        top: 0;
+        left: 0;
+        right: 0;
+        align-items: center;
+        backface-visibility: hidden;
+}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>CARD</h1>
+<div class="row">
+    {% for people in products %}
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Aadhar number {{people.Aadhar_no}}</h5>
+                <hr>
+                <p class="card-text">Name = {{people.name}}</p>
+                <p class="card-text">Age = {{people.age}}</p>
+                <p class="card-text">RD_NO = {{people.RD_NO}}</p>
+                <p class="card-text">Salary = {{people.salary}}</p>
+                <p class="card-text">Card Number = {{people.rationcard}}</p>
+                <p class="card-text">Card type = {{people.cardtype}}</p>
+                <p class="card-text">Address = {{people.address}}</p>
+
+            </div>
+
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
